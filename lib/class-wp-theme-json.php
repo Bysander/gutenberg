@@ -398,14 +398,15 @@ class WP_Theme_JSON {
 			}
 
 			// Assign defaults, then overwrite those that the block sets by itself.
+			// If the block selector is compounded, will append the element to each
+			// individual block selector.
+			$block_selectors = explode( ',', self::$blocks_metadata[ $block_name ]['selector'] );
 			foreach ( self::ELEMENTS as $el_name => $el_selector ) {
-				$block_selector = self::$blocks_metadata[ $block_name ]['selector'];
-				self::$blocks_metadata[ $block_name ]['elements'][ $el_name ] = $block_selector . ' ' . $el_selector;
-			}
-			if ( isset( $block_type->supports['__experimentalSelectorsForElements'] ) ) {
-				foreach ( $block_type->supports['__experimentalSelectorsForElements'] as $element_name => $element_selector ) {
-					self::$blocks_metadata[ $block_name ]['elements'][ $element_name ] = $element_selector;
+				$element_selector = array();
+				foreach ( $block_selectors as $selector ) {
+					$element_selector[] = $selector . ' ' . $el_selector;
 				}
+				self::$blocks_metadata[ $block_name ]['elements'][ $el_name ] = implode( ',', $element_selector );
 			}
 		}
 

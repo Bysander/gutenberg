@@ -125,73 +125,16 @@ class WP_Theme_JSON_Test extends WP_UnitTestCase {
 								'text' => '#123456',
 							),
 							'elements' => array(
-								'h1' => array(
+								'link' => array(
 									'typography' => array(
 										'fontSize' => '60px',
-									),
-								),
-								'h2' => array(
-									'typography' => array(
-										'fontSize' => '30px',
-									),
-								),
-								'h3' => array(
-									'typography' => array(
-										'fontSize' => '20px',
-									),
-								),
-								'h4' => array(
-									'typography' => array(
-										'fontSize' => '15px',
-									),
-								),
-								'h5' => array(
-									'typography' => array(
-										'fontSize' => '12px',
-									),
-								),
-								'h6' => array(
-									'typography' => array(
-										'fontSize' => '10px',
 									),
 								),
 							),
 						),
 						'core/post-title' => array(
-							'color'    => array(
+							'color' => array(
 								'text' => '#123456',
-							),
-							'elements' => array(
-								'h1' => array(
-									'typography' => array(
-										'fontSize' => '60px',
-									),
-								),
-								'h2' => array(
-									'typography' => array(
-										'fontSize' => '30px',
-									),
-								),
-								'h3' => array(
-									'typography' => array(
-										'fontSize' => '20px',
-									),
-								),
-								'h4' => array(
-									'typography' => array(
-										'fontSize' => '15px',
-									),
-								),
-								'h5' => array(
-									'typography' => array(
-										'fontSize' => '12px',
-									),
-								),
-								'h6' => array(
-									'typography' => array(
-										'fontSize' => '10px',
-									),
-								),
 							),
 						),
 					),
@@ -201,11 +144,11 @@ class WP_Theme_JSON_Test extends WP_UnitTestCase {
 		);
 
 		$this->assertEquals(
-			':root{--wp--preset--color--grey: grey;--wp--preset--font-family--small: 14px;--wp--preset--font-family--big: 41px;}.wp-block-group{--wp--custom--base-font: 16;--wp--custom--line-height--small: 1.2;--wp--custom--line-height--medium: 1.4;--wp--custom--line-height--large: 1.8;}:root{color: var(--wp--preset--color--grey);}a{color: #111;}.wp-block-group{padding-top: 12px;padding-bottom: 24px;}.wp-block-group a{color: #333;}h1,h2,h3,h4,h5,h6{color: #123456;}h1{font-size: 60px;}h2{font-size: 30px;}h3{font-size: 20px;}h4{font-size: 15px;}h5{font-size: 12px;}h6{font-size: 10px;}.wp-block-post-title{color: #123456;}h1.wp-block-post-title{font-size: 60px;}h2.wp-block-post-title{font-size: 30px;}h3.wp-block-post-title{font-size: 20px;}h4.wp-block-post-title{font-size: 15px;}h5.wp-block-post-title{font-size: 12px;}h6.wp-block-post-title{font-size: 10px;}.has-grey-color{color: grey !important;}.has-grey-background-color{background-color: grey !important;}.has-grey-border-color{border-color: grey !important;}',
+			':root{--wp--preset--color--grey: grey;--wp--preset--font-family--small: 14px;--wp--preset--font-family--big: 41px;}.wp-block-group{--wp--custom--base-font: 16;--wp--custom--line-height--small: 1.2;--wp--custom--line-height--medium: 1.4;--wp--custom--line-height--large: 1.8;}:root{color: var(--wp--preset--color--grey);}a{color: #111;}.wp-block-group{padding-top: 12px;padding-bottom: 24px;}.wp-block-group a{color: #333;}h1,h2,h3,h4,h5,h6{color: #123456;}h1 a,h2 a,h3 a,h4 a,h5 a,h6 a{font-size: 60px;}.wp-block-post-title{color: #123456;}.has-grey-color{color: grey !important;}.has-grey-background-color{background-color: grey !important;}.has-grey-border-color{border-color: grey !important;}',
 			$theme_json->get_stylesheet()
 		);
 		$this->assertEquals(
-			':root{color: var(--wp--preset--color--grey);}a{color: #111;}.wp-block-group{padding-top: 12px;padding-bottom: 24px;}.wp-block-group a{color: #333;}h1,h2,h3,h4,h5,h6{color: #123456;}h1{font-size: 60px;}h2{font-size: 30px;}h3{font-size: 20px;}h4{font-size: 15px;}h5{font-size: 12px;}h6{font-size: 10px;}.wp-block-post-title{color: #123456;}h1.wp-block-post-title{font-size: 60px;}h2.wp-block-post-title{font-size: 30px;}h3.wp-block-post-title{font-size: 20px;}h4.wp-block-post-title{font-size: 15px;}h5.wp-block-post-title{font-size: 12px;}h6.wp-block-post-title{font-size: 10px;}.has-grey-color{color: grey !important;}.has-grey-background-color{background-color: grey !important;}.has-grey-border-color{border-color: grey !important;}',
+			':root{color: var(--wp--preset--color--grey);}a{color: #111;}.wp-block-group{padding-top: 12px;padding-bottom: 24px;}.wp-block-group a{color: #333;}h1,h2,h3,h4,h5,h6{color: #123456;}h1 a,h2 a,h3 a,h4 a,h5 a,h6 a{font-size: 60px;}.wp-block-post-title{color: #123456;}.has-grey-color{color: grey !important;}.has-grey-background-color{background-color: grey !important;}.has-grey-border-color{border-color: grey !important;}',
 			$theme_json->get_stylesheet( 'block_styles' )
 		);
 		$this->assertEquals(
@@ -270,18 +213,14 @@ class WP_Theme_JSON_Test extends WP_UnitTestCase {
 				),
 				'styles'   => array(
 					'blocks' => array(
-						'core/heading' => array(
-							'elements' => array(
-								'h2' => array(
-									'color'      => array(
-										'text'       => 'red',
-										'background' => 'blue',
-									),
-									'typography' => array(
-										'fontSize'   => '12px',
-										'lineHeight' => '1.3',
-									),
-								),
+						'core/paragraph' => array(
+							'color'      => array(
+								'text'       => 'red',
+								'background' => 'blue',
+							),
+							'typography' => array(
+								'fontSize'   => '12px',
+								'lineHeight' => '1.3',
 							),
 						),
 					),
@@ -290,7 +229,7 @@ class WP_Theme_JSON_Test extends WP_UnitTestCase {
 		);
 
 		$this->assertEquals(
-			':root{--wp--preset--color--grey: grey;}h2{background-color: blue;color: red;font-size: 12px;line-height: 1.3;}.has-grey-color{color: grey !important;}.has-grey-background-color{background-color: grey !important;}.has-grey-border-color{border-color: grey !important;}',
+			':root{--wp--preset--color--grey: grey;}p{background-color: blue;color: red;font-size: 12px;line-height: 1.3;}.has-grey-color{color: grey !important;}.has-grey-background-color{background-color: grey !important;}.has-grey-border-color{border-color: grey !important;}',
 			$theme_json->get_stylesheet()
 		);
 	}
@@ -1189,310 +1128,6 @@ class WP_Theme_JSON_Test extends WP_UnitTestCase {
 		$actual = WP_Theme_JSON::get_from_editor_settings( $input );
 
 		$this->assertEqualSetsWithIndex( $expected, $actual['settings']['spacing'] );
-	}
-
-	function test_get_settings_v0() {
-		$defaults   = WP_Theme_JSON_Schema_V0::ALL_BLOCKS_NAME;
-		$root       = WP_Theme_JSON_Schema_V0::ROOT_BLOCK_NAME;
-		$theme_json = new WP_Theme_JSON(
-			array(
-				'settings' => array(
-					$defaults             => array(
-						'color' => array(
-							'customGradient' => false,
-							'palette'        => array(
-								array(
-									'slug'  => 'white',
-									'color' => 'white',
-								),
-								array(
-									'slug'  => 'black',
-									'color' => 'black',
-								),
-							),
-						),
-					),
-					$root                 => array(
-						'color'       => array(
-							'custom'  => false,
-							'palette' => array(
-								array(
-									'slug'  => 'grey',
-									'color' => 'grey',
-								),
-							),
-						),
-						'invalid/key' => 'value',
-					),
-					'core/heading/h1'     => array(
-						'color' => array(
-							'customGradient' => false,
-							'palette'        => array(
-								array(
-									'slug'  => 'white',
-									'color' => 'white',
-								),
-								array(
-									'slug'  => 'black',
-									'color' => 'black',
-								),
-							),
-						),
-					),
-					'core/heading/h2'     => array(
-						'color' => array(
-							'custom'  => false,
-							'palette' => array(
-								array(
-									'slug'  => 'grey',
-									'color' => 'grey',
-								),
-							),
-						),
-					),
-					'core/post-title/h1'  => array(
-						'color' => array(
-							'customGradient' => false,
-							'palette'        => array(
-								array(
-									'slug'  => 'white',
-									'color' => 'white',
-								),
-								array(
-									'slug'  => 'black',
-									'color' => 'black',
-								),
-							),
-						),
-					),
-					'core/post-title/h2'  => array(
-						'color' => array(
-							'custom'  => false,
-							'palette' => array(
-								array(
-									'slug'  => 'grey',
-									'color' => 'grey',
-								),
-							),
-						),
-					),
-					'core/query-title/h1' => array(
-						'color' => array(
-							'customGradient' => false,
-							'palette'        => array(
-								array(
-									'slug'  => 'white',
-									'color' => 'white',
-								),
-								array(
-									'slug'  => 'black',
-									'color' => 'black',
-								),
-							),
-						),
-					),
-					'core/query-title/h2' => array(
-						'color' => array(
-							'custom'  => false,
-							'palette' => array(
-								array(
-									'slug'  => 'grey',
-									'color' => 'grey',
-								),
-							),
-						),
-					),
-				),
-				'styles'   => array(
-					$root => array(
-						'color' => array(
-							'link' => 'blue',
-						),
-					),
-				),
-			)
-		);
-
-		$actual = $theme_json->get_settings();
-
-		$expected = array(
-			'color'  => array(
-				'custom'         => false,
-				'customGradient' => false,
-				'palette'        => array(
-					array(
-						'slug'  => 'grey',
-						'color' => 'grey',
-					),
-				),
-			),
-			'blocks' => array(
-				'core/heading'     => array(
-					'color' => array(
-						'customGradient' => false,
-						'custom'         => false,
-						'palette'        => array(
-							array(
-								'slug'  => 'grey',
-								'color' => 'grey',
-							),
-						),
-					),
-				),
-				'core/post-title'  => array(
-					'color' => array(
-						'customGradient' => false,
-						'custom'         => false,
-						'palette'        => array(
-							array(
-								'slug'  => 'grey',
-								'color' => 'grey',
-							),
-						),
-					),
-				),
-				'core/query-title' => array(
-					'color' => array(
-						'customGradient' => false,
-						'custom'         => false,
-						'palette'        => array(
-							array(
-								'slug'  => 'grey',
-								'color' => 'grey',
-							),
-						),
-					),
-				),
-			),
-		);
-
-		$this->assertEqualSetsWithIndex( $expected, $actual );
-	}
-
-	function test_get_stylesheet_v0() {
-		$root_name       = WP_Theme_JSON_Schema_V0::ROOT_BLOCK_NAME;
-		$all_blocks_name = WP_Theme_JSON_Schema_V0::ALL_BLOCKS_NAME;
-
-		$theme_json = new WP_Theme_JSON(
-			array(
-				'settings' => array(
-					$all_blocks_name => array(
-						'color'      => array(
-							'text'    => 'value',
-							'palette' => array(
-								array(
-									'slug'  => 'white',
-									'color' => 'white',
-								),
-								array(
-									'slug'  => 'black',
-									'color' => 'black',
-								),
-							),
-						),
-						'typography' => array(
-							'fontFamilies' => array(
-								array(
-									'slug'       => 'small',
-									'fontFamily' => '14px',
-								),
-								array(
-									'slug'       => 'big',
-									'fontFamily' => '41px',
-								),
-							),
-						),
-						'misc'       => 'value',
-					),
-					$root_name       => array(
-						'color' => array(
-							'palette' => array(
-								array(
-									'slug'  => 'grey',
-									'color' => 'grey',
-								),
-							),
-						),
-					),
-					'core/group'     => array(
-						'custom' => array(
-							'base-font'   => 16,
-							'line-height' => array(
-								'small'  => 1.2,
-								'medium' => 1.4,
-								'large'  => 1.8,
-							),
-						),
-					),
-				),
-				'styles'   => array(
-					$root_name            => array(
-						'color' => array(
-							'link' => '#111',
-							'text' => 'var:preset|color|grey',
-						),
-						'misc'  => 'value',
-					),
-					'core/group'          => array(
-						'color'   => array(
-							'link' => '#333',
-						),
-						'spacing' => array(
-							'padding' => array(
-								'top'    => '12px',
-								'bottom' => '24px',
-							),
-						),
-					),
-					'core/heading/h1'     => array(
-						'color'      => array(
-							'link' => '#111',
-						),
-						'typography' => array(
-							'fontSize' => '1em',
-						),
-					),
-					'core/heading/h2'     => array(
-						'color'      => array(
-							'link' => '#222',
-						),
-						'typography' => array(
-							'fontSize' => '2em',
-						),
-					),
-					'core/post-title/h3'  => array(
-						'color'      => array(
-							'link' => '#333',
-						),
-						'typography' => array(
-							'fontSize' => '3em',
-						),
-					),
-					'core/query-title/h4' => array(
-						'color'      => array(
-							'link' => '#444',
-						),
-						'typography' => array(
-							'fontSize' => '4em',
-						),
-					),
-				),
-				'misc'     => 'value',
-			)
-		);
-
-		$this->assertEquals(
-			':root{--wp--preset--color--grey: grey;--wp--preset--font-family--small: 14px;--wp--preset--font-family--big: 41px;}.wp-block-group{--wp--custom--base-font: 16;--wp--custom--line-height--small: 1.2;--wp--custom--line-height--medium: 1.4;--wp--custom--line-height--large: 1.8;}:root{color: var(--wp--preset--color--grey);}a{color: #111;}.wp-block-group{padding-top: 12px;padding-bottom: 24px;}.wp-block-group a{color: #333;}h1 a,h2 a,h3 a,h4 a,h5 a,h6 a{color: #222;}h1{font-size: 1em;}h2{font-size: 2em;}.wp-block-post-title a{color: #333;}h3.wp-block-post-title{font-size: 3em;}.wp-block-query-title a{color: #444;}h4.wp-block-query-title{font-size: 4em;}.has-grey-color{color: grey !important;}.has-grey-background-color{background-color: grey !important;}.has-grey-border-color{border-color: grey !important;}',
-			$theme_json->get_stylesheet()
-		);
-		$this->assertEquals(
-			':root{color: var(--wp--preset--color--grey);}a{color: #111;}.wp-block-group{padding-top: 12px;padding-bottom: 24px;}.wp-block-group a{color: #333;}h1 a,h2 a,h3 a,h4 a,h5 a,h6 a{color: #222;}h1{font-size: 1em;}h2{font-size: 2em;}.wp-block-post-title a{color: #333;}h3.wp-block-post-title{font-size: 3em;}.wp-block-query-title a{color: #444;}h4.wp-block-query-title{font-size: 4em;}.has-grey-color{color: grey !important;}.has-grey-background-color{background-color: grey !important;}.has-grey-border-color{border-color: grey !important;}',
-			$theme_json->get_stylesheet( 'block_styles' )
-		);
-		$this->assertEquals(
-			':root{--wp--preset--color--grey: grey;--wp--preset--font-family--small: 14px;--wp--preset--font-family--big: 41px;}.wp-block-group{--wp--custom--base-font: 16;--wp--custom--line-height--small: 1.2;--wp--custom--line-height--medium: 1.4;--wp--custom--line-height--large: 1.8;}',
-			$theme_json->get_stylesheet( 'css_variables' )
-		);
 	}
 
 }

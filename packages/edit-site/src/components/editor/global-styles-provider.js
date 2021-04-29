@@ -95,15 +95,11 @@ const getBlockMetadata = ( blockTypes ) => {
 				: '.wp-block-' +
 				  name.replace( 'core/', '' ).replace( '/', '-' );
 
-			const elements = blockType?.supports?.__experimentalElements
-				? blockType?.supports?.__experimentalElements
-				: ELEMENTS;
-
 			result[ name ] = {
 				name,
 				selector,
 				supports,
-				elements,
+				elements: ELEMENTS,
 			};
 		}
 	} );

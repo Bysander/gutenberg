@@ -34,15 +34,7 @@
 		},
 		"fontSize": true,
 		"lineHeight": true,
-		"__experimentalFontFamily": true,
-		"__experimentalSelectorsForElements": {
-			"h1": "h1.wp-block-post-title",
-			"h2": "h2.wp-block-post-title",
-			"h3": "h3.wp-block-post-title",
-			"h4": "h4.wp-block-post-title",
-			"h5": "h5.wp-block-post-title",
-			"h6": "h6.wp-block-post-title"
-		}
+		"__experimentalFontFamily": true
 	},
 	"style": "wp-block-post-title"
 }
